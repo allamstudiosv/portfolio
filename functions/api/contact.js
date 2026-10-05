@@ -64,7 +64,7 @@ function errorPage(status, text) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Message not sent | Zayd</title>
+<title>Message not sent | Hamza Allam</title>
 <style>
 :root{--paper:#EDF0F2;--ink:#17202B;--muted:#56636F;--blue:#1F4E79}
 @media (prefers-color-scheme: dark){:root{--paper:#0F1C2B;--ink:#E4E9EE;--muted:#9AA8B5;--blue:#8DB8E2}}

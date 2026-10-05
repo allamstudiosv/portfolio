@@ -1,6 +1,6 @@
 # portfolio
 
-Zayd's video editing and UI design portfolio, hosted on Cloudflare Pages.
+Hamza Allam's video editing and UI design portfolio, hosted on Cloudflare Pages.
 
 - `public/` – the static site (index.html, thanks.html); this is the build output directory
 - `functions/api/contact.js` – Pages Function that handles the contact form at `/api/contact`
