@@ -1,18 +1,13 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "allamstudio",
-  "main": "src/worker.js",
+  "pages_build_output_dir": "./public",
   "compatibility_date": "2025-09-01",
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS"
-  },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "portfolio-contact",
       "database_id": "a7ef40e1-267a-4b42-8f65-347505410515"
     }
-  ],
-  "observability": { "enabled": true }
+  ]
 }

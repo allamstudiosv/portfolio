@@ -217,7 +217,7 @@ dialog::backdrop{background:rgba(5,14,16,.85)}
           <li><a class="ph" href="#">Behance or Dribbble</a></li>
         </ul>
       </div>
-      <!-- Contact form: posts to the Cloudflare Worker (src/worker.js), which stores messages in D1. -->
+      <!-- Contact form: posts to the Pages Function (functions/api/contact.js), which stores messages in D1. -->
       <form name="contact" method="POST" action="/api/contact">
         <p class="hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <label>Name <input type="text" name="name" autocomplete="name" maxlength="100" required></label>

@@ -1,24 +1,13 @@
-// Serves the static site from /public and handles the contact form.
+// Cloudflare Pages Function for the contact form at /api/contact.
 // Messages are stored in the D1 database bound as DB (see wrangler.jsonc).
 
 const LIMITS = { name: 100, email: 254, message: 5000 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+export const onRequestPost = ({ request, env }) => handleContact(request, env);
 
-    if (url.pathname === "/api/contact") {
-      if (request.method !== "POST") {
-        return new Response("Method not allowed", { status: 405, headers: { Allow: "POST" } });
-      }
-      return handleContact(request, env);
-    }
-
-    // Anything that isn't a static file or the form endpoint
-    return env.ASSETS.fetch(request);
-  },
-};
+export const onRequest = () =>
+  new Response("Method not allowed", { status: 405, headers: { Allow: "POST" } });
 
 async function handleContact(request, env) {
   const type = request.headers.get("content-type") || "";
