@@ -100,6 +100,7 @@ section{padding-block:clamp(4rem,9vw,7rem)}
 .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem 3rem;margin-top:2.5rem}
 .tools p{color:var(--muted)}
 .split{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(2rem,6vw,5rem)}
+.portrait{display:block;width:100%;max-width:340px;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px;margin-top:1.75rem;box-shadow:0 0 0 1px var(--rule)}
 .contact-links{list-style:none;padding:0;margin:1.5rem 0 0;font-weight:650;display:grid;gap:.5rem}
 form{display:grid;gap:1rem}
 label{font-weight:650;font-size:.95rem;display:grid;gap:.35rem}
@@ -125,6 +126,7 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 
 @media (max-width:860px){
   .case,.split{grid-template-columns:1fr}
+  .portrait{max-width:260px}
   .case:nth-child(even) .shot{order:0}
 }
 @media (max-width:620px){
@@ -199,7 +201,13 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 
   <section id="about">
     <div class="wrap split">
-      <h2>About</h2>
+      <div>
+        <h2>About</h2>
+        <picture>
+          <source type="image/webp" srcset="/img/hamza-allam-480.webp 480w, /img/hamza-allam-800.webp 800w" sizes="(max-width: 860px) 260px, 340px">
+          <img class="portrait" src="/img/hamza-allam-800.jpg" srcset="/img/hamza-allam-480.jpg 480w, /img/hamza-allam-800.jpg 800w" sizes="(max-width: 860px) 260px, 340px" alt="Portrait of Hamza Allam" width="800" height="1000" loading="lazy">
+        </picture>
+      </div>
       <div>
         <!-- EDIT: write this in your own voice -->
         <p>I'm Hamza, a <span class="ph">student / freelancer based in your city</span>. I edit videos for <span class="ph">YouTube creators, brands, events</span> and design interfaces for <span class="ph">web and mobile apps</span>.</p>
