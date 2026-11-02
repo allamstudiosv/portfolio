@@ -111,6 +111,16 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 .dlg-bar p{margin:0;color:var(--muted)}
 .dlg-bar button{font:inherit;font-weight:700;background:none;color:var(--ink);border:2px solid var(--rule);border-radius:4px;padding:.4rem .9rem;cursor:pointer}
 
+/* FAQ */
+.faq{margin-top:2.5rem;max-width:860px;border-top:1px solid var(--rule)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding-block:1.25rem;font-weight:700;font-size:1.1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;color:var(--accent);font-size:1.6rem;font-weight:400;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq summary:hover{color:var(--accent)}
+.faq details p{color:var(--muted);margin:0 0 1.4rem}
+
 /* Language switch */
 .nav-end{display:flex;align-items:center;gap:1.75rem}
 .lang{font-weight:650;text-decoration:none;border:2px solid var(--rule);border-radius:999px;padding:.2rem .85rem;font-size:.95rem;line-height:1.5}
@@ -144,4 +154,5 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
   .playhead{animation:none;left:calc(100% - 2px)}
   [dir="rtl"] .playhead{left:auto;right:calc(100% - 2px)}
   .video .thumb img{transition:none}
+  .faq summary::after{transition:none}
 }
