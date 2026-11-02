@@ -11,147 +11,24 @@
 <meta name="theme-color" content="#111318">
 <link rel="preload" href="/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<style>
-/* ============ DESIGN TOKENS: dark black, electric blue, pure white ============ */
-:root{
-  --bg:#111318; --panel:#181B21; --panel-2:#20242C; --rule:#2C313B;
-  --ink:#FFFFFF; --muted:#A3A9B5; --accent:#2878FF; --accent-2:#FFFFFF; --on-accent:#111318;
-  --font:"Sora","Alexandria","Helvetica Neue",Arial,sans-serif;
-  --measure:64ch;
-}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;color-scheme:dark}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.6}
-img{max-width:100%;display:block}
-a{color:var(--ink);text-underline-offset:.22em;text-decoration-color:var(--accent)}
-a:hover{color:var(--accent)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:3px}
-.wrap{width:min(1180px,100% - 3rem);margin-inline:auto}
-h1,h2,h3{margin:0;line-height:1.05}
-h2{font-size:clamp(2rem,4.5vw,3.25rem);font-weight:800;letter-spacing:-.025em}
-h3{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}
-p{margin:0 0 1em;max-width:var(--measure)}
-section{padding-block:clamp(4rem,9vw,7rem)}
-.tc{font-variant-numeric:tabular-nums}
-.intro{color:var(--muted);margin-top:.9rem;font-size:1.1rem}
-
-/* ============ NAV ============ */
-.nav{display:flex;justify-content:space-between;align-items:center;padding-block:1.4rem}
-.nav .home{display:inline-flex;align-items:center;gap:.65rem;font-weight:800;text-decoration:none;font-size:1.1rem}
-.nav .home img{height:1.75rem;width:auto;display:block}
-.nav ul{display:flex;gap:1.75rem;list-style:none;margin:0;padding:0}
-.nav ul a{text-decoration:none;color:var(--muted)}
-.nav ul a:hover{color:var(--ink)}
-
-/* ============ HERO ============ */
-.hero{padding-block:clamp(2rem,6vw,4rem) clamp(3rem,7vw,5rem)}
-.hero h1{font-size:clamp(3.2rem,11vw,8.5rem);font-weight:900;letter-spacing:-.05em;line-height:.88}
-.hero .role{font-size:clamp(1.25rem,2.6vw,1.75rem);font-weight:500;margin-top:1.25rem;max-width:30ch;color:var(--muted)}
-
-/* Showreel player */
-.reel{margin-top:clamp(2.5rem,6vw,4rem);position:relative;aspect-ratio:16/9;background:var(--panel);border-radius:4px;overflow:hidden}
-.reel iframe,.reel video{position:absolute;inset:0;width:100%;height:100%;border:0}
-.reel-poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:var(--panel) center/cover no-repeat;color:var(--ink);font:inherit;display:grid;place-items:center}
-.reel-poster .play{display:flex;align-items:center;gap:.9rem;background:rgba(17,19,24,.82);padding:1rem 1.6rem 1rem 1.1rem;border-radius:999px;font-weight:700;font-size:1.1rem}
-.reel-poster .play::before{content:"";width:0;height:0;border-left:18px solid var(--accent);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:.4rem}
-.reel-poster:hover .play{background:var(--bg)}
-.reel-empty{position:absolute;bottom:1rem;left:1rem;right:1rem;color:var(--muted);font-size:.95rem;text-align:center}
-
-/* Timeline: the signature element. Each clip is a project, sized by its runtime. */
-.timeline{margin-top:1rem;user-select:none}
-.ruler{display:flex;justify-content:space-between;color:var(--muted);font-size:.8rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
-.track{position:relative;display:flex;gap:3px;margin-top:.6rem;height:58px}
-.clip{flex:var(--len) 1 0;min-width:0;border:0;border-radius:3px;padding:.5rem .65rem;text-align:left;font:inherit;font-size:.85rem;font-weight:650;color:var(--on-accent);cursor:pointer;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;background:var(--accent-2)}
-.clip:nth-child(even){background:var(--accent)}
-.clip span{display:block;font-weight:500;opacity:.75}
-.clip:hover{filter:brightness(1.12)}
-.playhead{position:absolute;top:-10px;bottom:-6px;width:2px;background:var(--ink);left:0;pointer-events:none;animation:scrub 3.2s .5s cubic-bezier(.45,0,.2,1) forwards}
-.playhead::before{content:"";position:absolute;top:0;left:-6px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--ink)}
-@keyframes scrub{to{left:calc(100% - 2px)}}
-.timeline .hint{color:var(--muted);font-size:.9rem;margin-top:.75rem}
-
-/* ============ VIDEO GRID ============ */
-.videos{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:3rem 2rem;margin-top:2.75rem}
-.video button{all:unset;cursor:pointer;display:block;width:100%}
-.video .thumb{position:relative;aspect-ratio:16/9;border-radius:4px;overflow:hidden;background:linear-gradient(135deg,var(--panel-2),var(--panel))}
-.video .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.video button:hover img{transform:scale(1.03)}
-.video button:focus-visible .thumb{outline:3px solid var(--accent);outline-offset:3px}
-.video .dur{position:absolute;right:.6rem;bottom:.6rem;background:rgba(17,19,24,.88);padding:.1rem .5rem;border-radius:3px;font-size:.85rem;font-weight:600}
-.video .noimg{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:.95rem}
-.video h3{margin-top:1rem}
-.video .meta{color:var(--muted);font-size:.95rem;margin:.3rem 0 0}
-.video.flash .thumb{outline:3px solid var(--accent);outline-offset:4px}
-
-/* ============ UI CASE STUDIES ============ */
-.cases{margin-top:2.75rem;display:grid;gap:clamp(4rem,8vw,6rem)}
-.case{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-.case:nth-child(even) .shot{order:2}
-.shot{aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:linear-gradient(160deg,var(--panel-2),var(--panel));display:grid;place-items:center;color:var(--muted)}
-.shot img{width:100%;height:100%;object-fit:cover}
-.case h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:800}
-.case .kind{color:var(--accent);font-weight:650;margin:.5rem 0 1.25rem}
-.case dl{margin:0;display:grid;gap:1rem}
-.case dt{font-weight:700}
-.case dd{margin:.15rem 0 0;color:var(--muted)}
-.case .links{margin-top:1.5rem;display:flex;gap:1.25rem;flex-wrap:wrap;font-weight:650}
-
-/* ============ TOOLS / ABOUT / CONTACT ============ */
-.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem 3rem;margin-top:2.5rem}
-.tools p{color:var(--muted)}
-.split{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(2rem,6vw,5rem)}
-.portrait{display:block;width:100%;max-width:340px;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:6px;margin-top:1.75rem;box-shadow:0 0 0 1px var(--rule)}
-.contact-links{list-style:none;padding:0;margin:1.5rem 0 0;font-weight:650;display:grid;gap:.5rem}
-form{display:grid;gap:1rem}
-label{font-weight:650;font-size:.95rem;display:grid;gap:.35rem}
-input,textarea{font:inherit;color:var(--ink);background:var(--panel);border:2px solid var(--rule);border-radius:4px;padding:.75rem .9rem}
-input:focus,textarea:focus{border-color:var(--accent);outline:none}
-textarea{min-height:9rem;resize:vertical}
-.btn{justify-self:start;cursor:pointer;font:inherit;font-weight:750;background:var(--accent);color:var(--on-accent);border:0;border-radius:4px;padding:.85rem 1.4rem;text-decoration:none;display:inline-block}
-.btn:hover{background:var(--ink);color:var(--on-accent)}
-.hidden{position:absolute;left:-9999px}
-.ph{background:rgba(40,120,255,.18);border-bottom:1px dashed var(--accent)}
-footer{border-top:1px solid var(--rule);padding-block:2.5rem;color:var(--muted);font-size:.95rem}
-
-/* Video lightbox */
-dialog{width:min(1100px,94vw);padding:0;border:0;border-radius:6px;background:var(--bg);color:var(--ink)}
-dialog::backdrop{background:rgba(8,9,12,.88)}
-.dlg-frame{aspect-ratio:16/9;position:relative;background:#000}
-.dlg-frame iframe,.dlg-frame video{position:absolute;inset:0;width:100%;height:100%;border:0}
-dialog.tall{width:fit-content;max-width:94vw}
-dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margin-inline:auto}
-.dlg-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 1.25rem}
-.dlg-bar p{margin:0;color:var(--muted)}
-.dlg-bar button{font:inherit;font-weight:700;background:none;color:var(--ink);border:2px solid var(--rule);border-radius:4px;padding:.4rem .9rem;cursor:pointer}
-
-@media (max-width:860px){
-  .case,.split{grid-template-columns:1fr}
-  .portrait{max-width:260px}
-  .case:nth-child(even) .shot{order:0}
-}
-@media (max-width:620px){
-  .nav ul{display:none}
-  .track{height:48px}
-  .clip span{display:none}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .playhead{animation:none;left:calc(100% - 2px)}
-  .video .thumb img{transition:none}
-}
-</style>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="/">
+<link rel="alternate" hreflang="ar" href="/ar/">
 </head>
 <body>
 
 <header class="wrap">
   <nav class="nav" aria-label="Main">
     <a class="home" href="#top"><img src="/brand/allam-studios-mark-white.svg" alt="" width="34" height="27"><span>Hamza Allam</span></a>
-    <ul>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#ui">UI design</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-end">
+      <ul>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#ui">UI design</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="lang" href="/ar/" lang="ar" hreflang="ar">العربية</a>
+    </div>
   </nav>
 </header>
 
@@ -212,7 +89,7 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
         <!-- EDIT: write this in your own voice -->
         <p>I'm Hamza, a <span class="ph">student / freelancer based in your city</span>. I edit videos for <span class="ph">YouTube creators, brands, events</span> and design interfaces for <span class="ph">web and mobile apps</span>.</p>
         <p>Editing and UI design are the same job in different forms: deciding what someone sees, in what order, and cutting everything that gets in the way.</p>
-        <p><a class="btn" href="resume.pdf">Download resume</a></p>
+        <p><a class="btn" href="/resume.pdf">Download resume</a></p>
       </div>
     </div>
   </section>
@@ -249,142 +126,7 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
   <div class="dlg-bar"><p id="dlgTitle"></p><button type="button" id="dlgClose">Close</button></div>
 </dialog>
 
-<script>
-/* =====================================================================
-   EDIT YOUR CONTENT HERE. You shouldn't need to touch anything below.
-
-   Video sources (use ONE per item):
-     youtube: "VIDEO_ID"   from youtube.com/watch?v=VIDEO_ID
-     vimeo:   "VIDEO_ID"   from vimeo.com/VIDEO_ID
-     file:    "videos/clip.mp4"  a file you upload with the site (under 25 MB)
-   vertical: true      for 9:16 videos, so the player opens tall
-
-   thumb: optional image path. YouTube videos use their own thumbnail
-          automatically if you leave it out.
-   duration: "m:ss" — also sets each clip's width on the timeline.
-   ===================================================================== */
-
-const SHOWREEL = {
-  youtube: "",            // e.g. "dQw4w9WgXcQ"
-  vimeo: "",
-  file: "",
-  poster: ""              // optional cover image for the reel
-};
-
-const VIDEOS = [
-  { title: "Historical documentary", type: "Motion graphics", role: "",
-    tools: "", duration: "0:28", file: "videos/historical-documentary.mp4",
-    thumb: "videos/thumbs/historical-documentary.jpg" },
-  { title: "UI animation", type: "UI motion design", role: "",
-    tools: "", duration: "0:07", file: "videos/ui-animation.mp4",
-    thumb: "videos/thumbs/ui-animation.jpg", vertical: true }
-];
-
-const UI_PROJECTS = [
-  { title: "App name", kind: "Mobile app redesign",
-    problem: "What was hard or broken for users before you started.",
-    work: "What you did: research, wireframes, components, prototype.",
-    result: "What changed: clearer flow, fewer steps, feedback received.",
-    tools: "Figma", image: "", prototype: "#", caseStudy: "#" },
-  { title: "Website name", kind: "Landing page design",
-    problem: "The goal of the page and who it was for.",
-    work: "Layout, visual direction, and responsive versions you designed.",
-    result: "The outcome or what you learned.",
-    tools: "Figma, HTML, CSS", image: "", prototype: "#", caseStudy: "#" }
-];
-
-/* ============================ RENDERING ============================ */
-const $ = s => document.querySelector(s);
-const toSec = d => { const [m,s] = (d||"0:00").split(":").map(Number); return m*60 + (s||0); };
-const fmt = t => `${Math.floor(t/60)}:${String(Math.round(t%60)).padStart(2,"0")}`;
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-
-function embed(src, autoplay){
-  const ap = autoplay ? 1 : 0;
-  if (src.youtube) return `<iframe src="https://www.youtube-nocookie.com/embed/${esc(src.youtube)}?autoplay=${ap}&rel=0" title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
-  if (src.vimeo)   return `<iframe src="https://player.vimeo.com/video/${esc(src.vimeo)}?autoplay=${ap}" title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
-  if (src.file)    return `<video src="${esc(src.file)}" controls ${autoplay ? "autoplay" : ""} playsinline></video>`;
-  return "";
-}
-const hasSrc = v => v.youtube || v.vimeo || v.file;
-const thumbFor = v => v.thumb || (v.youtube ? `https://img.youtube.com/vi/${v.youtube}/hqdefault.jpg` : "");
-
-// Showreel
-(function(){
-  const reel = $("#reel");
-  const poster = SHOWREEL.poster || thumbFor(SHOWREEL);
-  reel.innerHTML = `<button class="reel-poster" type="button" ${poster ? `style="background-image:url('${esc(poster)}')"` : ""}>
-      <span class="play">Play showreel</span></button>
-      ${hasSrc(SHOWREEL) ? "" : `<p class="reel-empty">Add your showreel link in the SHOWREEL settings inside index.html.</p>`}`;
-  reel.querySelector("button").addEventListener("click", () => {
-    if (hasSrc(SHOWREEL)) reel.innerHTML = embed(SHOWREEL, true);
-  });
-})();
-
-// Timeline
-(function(){
-  const total = VIDEOS.reduce((a,v) => a + Math.max(toSec(v.duration), 1), 0);
-  const ruler = $("#ruler");
-  ruler.innerHTML = [0,.25,.5,.75,1].map(f => `<span>${fmt(total*f)}</span>`).join("");
-  const track = $("#track");
-  VIDEOS.forEach((v,i) => {
-    const b = document.createElement("button");
-    b.className = "clip";
-    // Square root keeps a 12-minute video from swallowing a 20-second one
-    b.style.setProperty("--len", Math.sqrt(Math.max(toSec(v.duration),1)).toFixed(2));
-    b.innerHTML = `${esc(v.title)}<span class="tc">${esc(v.duration)}</span>`;
-    b.setAttribute("aria-label", `Jump to ${v.title}`);
-    b.addEventListener("click", () => {
-      const card = document.getElementById(`video-${i}`);
-      card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"});
-      card.classList.add("flash"); setTimeout(() => card.classList.remove("flash"), 1600);
-    });
-    track.appendChild(b);
-  });
-})();
-
-// Video grid
-$("#videos").innerHTML = VIDEOS.map((v,i) => {
-  const t = thumbFor(v);
-  return `<article class="video" id="video-${i}">
-    <button type="button" data-i="${i}" aria-label="Play ${esc(v.title)}">
-      <div class="thumb">${t ? `<img src="${esc(t)}" alt="" loading="lazy">` : `<span class="noimg">Add a thumbnail</span>`}
-        <span class="dur tc">${esc(v.duration)}</span></div>
-      <h3>${esc(v.title)}</h3>
-      <p class="meta">${esc([v.type, v.role].filter(Boolean).join(". "))}</p>
-      ${v.tools ? `<p class="meta">${esc(v.tools)}</p>` : ""}
-    </button></article>`;
-}).join("");
-
-// Lightbox
-const dlg = $("#player");
-document.querySelectorAll(".video button").forEach(btn => btn.addEventListener("click", () => {
-  const v = VIDEOS[btn.dataset.i];
-  if (!hasSrc(v)) { alert(`Add a YouTube, Vimeo, or file link for "${v.title}" in the VIDEOS list.`); return; }
-  $("#dlgFrame").innerHTML = embed(v, true);
-  dlg.classList.toggle("tall", !!v.vertical);
-  $("#dlgTitle").textContent = `${v.title}. ${v.type}`;
-  dlg.showModal();
-}));
-const closeDlg = () => { dlg.close(); };
-$("#dlgClose").addEventListener("click", closeDlg);
-dlg.addEventListener("click", e => { if (e.target === dlg) closeDlg(); });
-dlg.addEventListener("close", () => { $("#dlgFrame").innerHTML = ""; });
-
-// UI case studies
-$("#cases").innerHTML = UI_PROJECTS.map(p => `<article class="case">
-  <div class="shot">${p.image ? `<img src="${esc(p.image)}" alt="Screens from ${esc(p.title)}" loading="lazy">` : "Add a screenshot or mockup"}</div>
-  <div>
-    <h3>${esc(p.title)}</h3>
-    <p class="kind">${esc(p.kind)}</p>
-    <dl>
-      <div><dt>The problem</dt><dd>${esc(p.problem)}</dd></div>
-      <div><dt>What I did</dt><dd>${esc(p.work)}</dd></div>
-      <div><dt>The result</dt><dd>${esc(p.result)}</dd></div>
-      <div><dt>Tools</dt><dd>${esc(p.tools)}</dd></div>
-    </dl>
-    <p class="links"><a href="${esc(p.prototype)}">View prototype</a><a href="${esc(p.caseStudy)}">Read case study</a></p>
-  </div></article>`).join("");
-</script>
+<script src="/assets/content.js"></script>
+<script src="/assets/site.js"></script>
 </body>
 </html>
