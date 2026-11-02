@@ -67,8 +67,8 @@ function errorPage(status, text) {
 <title>Message not sent | Hamza Allam</title>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
-:root{--paper:#EDF0F2;--ink:#17202B;--muted:#56636F;--blue:#1F4E79}
-@media (prefers-color-scheme: dark){:root{--paper:#0F1C2B;--ink:#E4E9EE;--muted:#9AA8B5;--blue:#8DB8E2}}
+html{color-scheme:dark}
+:root{--paper:#111318;--ink:#FFFFFF;--muted:#A3A9B5;--blue:#2878FF}
 body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--paper);color:var(--ink);font-family:"Sora","Alexandria",Arial,sans-serif;font-size:1.125rem;padding:1.5rem}
 h1{font-family:"Sora","Alexandria",Arial,sans-serif;font-weight:800;font-size:clamp(2.2rem,7vw,4rem);margin:0 0 1rem}
 p{color:var(--muted);max-width:40ch}
