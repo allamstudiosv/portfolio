@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hamza Allam | Video Editor &amp; UI Designer</title>
 <meta name="description" content="Portfolio of Hamza Allam: video editing and UI design projects.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#111318">
 <link rel="preload" href="/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <style>
@@ -34,7 +37,8 @@ section{padding-block:clamp(4rem,9vw,7rem)}
 
 /* ============ NAV ============ */
 .nav{display:flex;justify-content:space-between;align-items:center;padding-block:1.4rem}
-.nav .home{font-weight:800;text-decoration:none;font-size:1.1rem}
+.nav .home{display:inline-flex;align-items:center;gap:.65rem;font-weight:800;text-decoration:none;font-size:1.1rem}
+.nav .home img{height:1.75rem;width:auto;display:block}
 .nav ul{display:flex;gap:1.75rem;list-style:none;margin:0;padding:0}
 .nav ul a{text-decoration:none;color:var(--muted)}
 .nav ul a:hover{color:var(--ink)}
@@ -137,7 +141,7 @@ dialog::backdrop{background:rgba(8,9,12,.88)}
 
 <header class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="home" href="#top">Hamza Allam</a>
+    <a class="home" href="#top"><img src="/brand/allam-studios-mark-white.svg" alt="" width="34" height="27"><span>Hamza Allam</span></a>
     <ul>
       <li><a href="#video">Video</a></li>
       <li><a href="#ui">UI design</a></li>
