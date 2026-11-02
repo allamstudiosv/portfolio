@@ -94,34 +94,10 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="wrap split">
-      <div>
-        <h2>Contact</h2>
-        <p class="intro">Have a video to cut or an app to design? Send me a message.</p>
-        <!-- EDIT: your real links -->
-        <ul class="contact-links">
-          <li><a href="mailto:allamstudiosv@gmail.com">allamstudiosv@gmail.com</a></li>
-          <li><a class="ph" href="#">Instagram</a></li>
-          <li><a class="ph" href="#">YouTube or Vimeo</a></li>
-          <li><a class="ph" href="#">Behance or Dribbble</a></li>
-        </ul>
-      </div>
-      <!-- Contact form: posts to the Pages Function (functions/api/contact.js), which stores messages in D1. -->
-      <form name="contact" method="POST" action="/api/contact">
-        <p class="hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-        <label>Name <input type="text" name="name" autocomplete="name" maxlength="100" required></label>
-        <label>Email <input type="email" name="email" autocomplete="email" maxlength="254" required></label>
-        <label>Project details <textarea name="message" maxlength="5000" required></textarea></label>
-        <button type="submit" class="btn">Send message</button>
-      </form>
-    </div>
-  </section>
-
   <section id="faq">
     <div class="wrap">
       <h2>Frequently asked questions</h2>
-      <p class="intro">Quick answers about how video projects work. For anything specific to your project, send me a message.</p>
+      <p class="intro">Quick answers about how video projects work.</p>
       <div class="faq">
         <details>
           <summary>What formats do you deliver?</summary>
@@ -152,6 +128,31 @@
           <p>There's no fixed cancellation fee. If you cancel before work starts, your first payment is refunded, minus any approved costs that can't be recovered. After work starts, the settlement reflects the work completed.</p>
         </details>
       </div>
+      <p class="faq-more">Still have a question? <a href="#contact">Send me a message</a>.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap split">
+      <div>
+        <h2>Contact</h2>
+        <p class="intro">Have a video to cut or an app to design? Send me a message.</p>
+        <!-- EDIT: your real links -->
+        <ul class="contact-links">
+          <li><a href="mailto:allamstudiosv@gmail.com">allamstudiosv@gmail.com</a></li>
+          <li><a class="ph" href="#">Instagram</a></li>
+          <li><a class="ph" href="#">YouTube or Vimeo</a></li>
+          <li><a class="ph" href="#">Behance or Dribbble</a></li>
+        </ul>
+      </div>
+      <!-- Contact form: posts to the Pages Function (functions/api/contact.js), which stores messages in D1. -->
+      <form name="contact" method="POST" action="/api/contact">
+        <p class="hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <label>Name <input type="text" name="name" autocomplete="name" maxlength="100" required></label>
+        <label>Email <input type="email" name="email" autocomplete="email" maxlength="254" required></label>
+        <label>Project details <textarea name="message" maxlength="5000" required></textarea></label>
+        <button type="submit" class="btn">Send message</button>
+      </form>
     </div>
   </section>
 </main>
