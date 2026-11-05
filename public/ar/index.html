@@ -94,35 +94,10 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="wrap split">
-      <div>
-        <h2>تواصل</h2>
-        <p class="intro">لديك فيديو تريد مونتاجه أو تطبيق تريد تصميمه؟ أرسل لي رسالة.</p>
-        <!-- EDIT: your real links -->
-        <ul class="contact-links">
-          <li><a href="mailto:allamstudiosv@gmail.com" dir="ltr">allamstudiosv@gmail.com</a></li>
-          <li><a class="ph" href="#">إنستغرام</a></li>
-          <li><a class="ph" href="#">يوتيوب أو Vimeo</a></li>
-          <li><a class="ph" href="#">Behance أو Dribbble</a></li>
-        </ul>
-      </div>
-      <!-- Contact form: posts to the Pages Function (functions/api/contact.js), which stores messages in D1. -->
-      <form name="contact" method="POST" action="/api/contact">
-        <input type="hidden" name="lang" value="ar">
-        <p class="hidden"><label>اترك هذا الحقل فارغًا <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-        <label>الاسم <input type="text" name="name" autocomplete="name" maxlength="100" required></label>
-        <label>البريد الإلكتروني <input type="email" name="email" autocomplete="email" maxlength="254" required></label>
-        <label>تفاصيل المشروع <textarea name="message" maxlength="5000" required></textarea></label>
-        <button type="submit" class="btn">إرسال الرسالة</button>
-      </form>
-    </div>
-  </section>
-
   <section id="faq">
     <div class="wrap">
       <h2>الأسئلة الشائعة</h2>
-      <p class="intro">إجابات سريعة عن طريقة سير مشاريع الفيديو. لأي تفاصيل خاصة بمشروعك، أرسل لي رسالة.</p>
+      <p class="intro">إجابات سريعة عن طريقة سير مشاريع الفيديو.</p>
       <div class="faq">
         <details>
           <summary>ما الصيغ التي تُسلَّم بها الفيديوهات؟</summary>
@@ -153,6 +128,32 @@
           <p>لا توجد رسوم إلغاء ثابتة. إذا ألغيت قبل بدء العمل تُسترد دفعة البداية، مخصومًا منها أي تكاليف معتمدة لا يمكن استردادها. وبعد بدء العمل، تتم التسوية بحسب ما أُنجز من عمل.</p>
         </details>
       </div>
+      <p class="faq-more">لديك سؤال آخر؟ <a href="#contact">أرسل لي رسالة</a>.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap split">
+      <div>
+        <h2>تواصل</h2>
+        <p class="intro">لديك فيديو تريد مونتاجه أو تطبيق تريد تصميمه؟ أرسل لي رسالة.</p>
+        <!-- EDIT: your real links -->
+        <ul class="contact-links">
+          <li><a href="mailto:allamstudiosv@gmail.com" dir="ltr">allamstudiosv@gmail.com</a></li>
+          <li><a class="ph" href="#">إنستغرام</a></li>
+          <li><a class="ph" href="#">يوتيوب أو Vimeo</a></li>
+          <li><a class="ph" href="#">Behance أو Dribbble</a></li>
+        </ul>
+      </div>
+      <!-- Contact form: posts to the Pages Function (functions/api/contact.js), which stores messages in D1. -->
+      <form name="contact" method="POST" action="/api/contact">
+        <input type="hidden" name="lang" value="ar">
+        <p class="hidden"><label>اترك هذا الحقل فارغًا <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <label>الاسم <input type="text" name="name" autocomplete="name" maxlength="100" required></label>
+        <label>البريد الإلكتروني <input type="email" name="email" autocomplete="email" maxlength="254" required></label>
+        <label>تفاصيل المشروع <textarea name="message" maxlength="5000" required></textarea></label>
+        <button type="submit" class="btn">إرسال الرسالة</button>
+      </form>
     </div>
   </section>
 </main>
