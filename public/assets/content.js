@@ -45,7 +45,7 @@ window.SITE_CONTENT = {
     },
     {
       title: { en: "UI animation", ar: "تحريك واجهات" },
-      type:  { en: "UI motion design", ar: "تصميم حركة الواجهات" },
+      type:  { en: "Motion graphics · UI animation", ar: "موشن جرافيك · تحريك بأسلوب الواجهات" },
       role:  { en: "", ar: "" },
       tools: { en: "", ar: "" },
       duration: "0:07",
@@ -55,30 +55,5 @@ window.SITE_CONTENT = {
     }
   ],
 
-  UI_PROJECTS: [
-    {
-      title:   { en: "App name", ar: "اسم التطبيق" },
-      kind:    { en: "Mobile app redesign", ar: "إعادة تصميم تطبيق جوال" },
-      problem: { en: "What was hard or broken for users before you started.",
-                 ar: "ما الذي كان صعبًا أو معطّلًا على المستخدمين قبل أن تبدأ." },
-      work:    { en: "What you did: research, wireframes, components, prototype.",
-                 ar: "ما قمت به: البحث، المخططات الأولية، المكوّنات، النموذج التفاعلي." },
-      result:  { en: "What changed: clearer flow, fewer steps, feedback received.",
-                 ar: "ما الذي تغيّر: تدفّق أوضح، خطوات أقل، وآراء المستخدمين." },
-      tools:   { en: "Figma", ar: "Figma" },
-      image: "", prototype: "#", caseStudy: "#"
-    },
-    {
-      title:   { en: "Website name", ar: "اسم الموقع" },
-      kind:    { en: "Landing page design", ar: "تصميم صفحة هبوط" },
-      problem: { en: "The goal of the page and who it was for.",
-                 ar: "هدف الصفحة والجمهور الموجّهة إليه." },
-      work:    { en: "Layout, visual direction, and responsive versions you designed.",
-                 ar: "التخطيط والاتجاه البصري والنسخ المتجاوبة التي صمّمتها." },
-      result:  { en: "The outcome or what you learned.",
-                 ar: "النتيجة أو ما تعلّمته." },
-      tools:   { en: "Figma, HTML, CSS", ar: "Figma، HTML، CSS" },
-      image: "", prototype: "#", caseStudy: "#"
-    }
-  ]
+  UI_PROJECTS: []
 };
