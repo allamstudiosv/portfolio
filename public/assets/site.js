@@ -8,7 +8,7 @@
     en: {
       playReel: "Play showreel",
       reelEmpty: "Showreel coming soon.",
-      jumpTo: t => `Jump to ${t}`,
+
       play: t => `Play ${t}`,
       noThumb: "Add a thumbnail",
       noVideo: t => `"${t}" isn't available yet.`,
@@ -21,7 +21,7 @@
     ar: {
       playReel: "تشغيل العرض",
       reelEmpty: "العرض قريبًا.",
-      jumpTo: t => `الانتقال إلى ${t}`,
+
       play: t => `تشغيل ${t}`,
       noThumb: "أضف صورة مصغّرة",
       noVideo: t => `«${t}» غير متاح بعد.`,
@@ -69,14 +69,19 @@
     VIDEOS.forEach((v, i) => {
       const b = document.createElement("button");
       b.className = "clip";
+      b.type = "button";
+      b.setAttribute("aria-controls", "reel");
+      b.setAttribute("aria-pressed", String(!!hasSrc(SHOWREEL) && ["file", "youtube", "vimeo"].some(key => SHOWREEL[key] && SHOWREEL[key] === v[key])));
       // Square root keeps a 12-minute video from swallowing a 20-second one
       b.style.setProperty("--len", Math.sqrt(Math.max(toSec(v.duration), 1)).toFixed(2));
       b.innerHTML = `${esc(L(v.title))}<span class="tc">${esc(v.duration)}</span>`;
-      b.setAttribute("aria-label", STRINGS.jumpTo(L(v.title)));
+      b.setAttribute("aria-label", STRINGS.play(L(v.title)));
       b.addEventListener("click", () => {
-        const card = document.getElementById(`video-${i}`);
-        card.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-        card.classList.add("flash"); setTimeout(() => card.classList.remove("flash"), 1600);
+        if (!hasSrc(v)) { alert(STRINGS.noVideo(L(v.title))); return; }
+        const reel = $("#reel");
+        reel.innerHTML = embed(v, true);
+        track.querySelectorAll(".clip").forEach(clip => clip.setAttribute("aria-pressed", String(clip === b)));
+        reel.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
       });
       track.appendChild(b);
     });
