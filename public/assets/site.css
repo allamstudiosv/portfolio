@@ -120,8 +120,6 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq summary:hover{color:var(--accent)}
 .faq details p{color:var(--muted);margin:0 0 1.4rem}
-.faq-more{margin-top:1.75rem;color:var(--muted)}
-.faq-more a{font-weight:650}
 
 /* Language switch */
 .nav-end{display:flex;align-items:center;gap:1.75rem}
