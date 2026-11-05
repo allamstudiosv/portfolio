@@ -161,8 +161,6 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 
 /* Client review cards: preserve the complete artwork. */
 .reviews-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;align-items:start}
-.reviews-grid a{display:block;border-radius:12px}
 .reviews-grid img{display:block;width:100%;height:auto}
-.reviews-grid a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}
 @media(max-width:860px){.reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.reviews-grid{grid-template-columns:1fr}}
