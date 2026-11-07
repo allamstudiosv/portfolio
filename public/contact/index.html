@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Allam Studios</title>
+<meta name="description" content="Contact Hamza for video editing and motion design projects.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#111318">
+<link rel="preload" href="/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="/contact/">
+<link rel="alternate" hreflang="ar" href="/ar/contact/">
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="home" href="/#top"><img src="/brand/allam-studios-mark-white.svg" alt="" width="34" height="27"><span>Hamza Allam</span></a>
+    <div class="nav-end">
+      <ul>
+        <li><a href="/work/">My Work</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+      <a class="lang" href="/ar/contact/" lang="ar" hreflang="ar">العربية</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top" class="contact-page">
+  <section id="contact">
+    <div class="wrap split">
+      <div>
+        <h1>Contact</h1>
+        <p class="intro">Have a video to edit or a motion graphics project in mind? Send me a message.</p>
+        <!-- EDIT: your real links -->
+        <ul class="contact-links">
+          <li><a href="mailto:allamstudiosv@gmail.com">allamstudiosv@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/allam_studios/">Instagram</a></li>
+        </ul>
+      </div>
+      <!-- Contact form: posts to the Pages Function (functions/api/contact.js), which stores messages in D1. -->
+      <form name="contact" method="POST" action="/api/contact">
+        <p class="hidden"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <label>Name <input type="text" name="name" autocomplete="name" maxlength="100" required></label>
+        <label>Email <input type="email" name="email" autocomplete="email" maxlength="254" required></label>
+        <label>Project details <textarea name="message" maxlength="5000" required></textarea></label>
+        <button type="submit" class="btn">Send message</button>
+      </form>
+    </div>
+  </section>
+<div class="wrap work-actions"><a class="btn" href="/">Back to home</a></div>
+</main>
+<footer><div class="wrap">© 2026 Hamza Allam</div></footer>
+
+</body>
+</html>
