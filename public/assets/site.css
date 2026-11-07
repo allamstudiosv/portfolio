@@ -182,3 +182,12 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 .contact-page h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.1;margin-bottom:1rem}
 
 .about-page h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.1;margin-bottom:1rem}
+
+@media (hover:hover) and (pointer:fine){
+  .reviews-grid img{position:relative;transition:transform .22s ease}
+  .reviews-grid img:hover{transform:scale(1.035);z-index:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .reviews-grid img{transition:none}
+  .reviews-grid img:hover{transform:none}
+}
