@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Work | Allam Studios</title>
+<meta name="description" content="Portfolio of Hamza Allam: video editing and motion graphics, including UI animation.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#111318">
+<link rel="preload" href="/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" hreflang="en" href="/work/">
+<link rel="alternate" hreflang="ar" href="/ar/work/">
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="home" href="/#top"><img src="/brand/allam-studios-mark-white.svg" alt="" width="34" height="27"><span>Hamza Allam</span></a>
+    <div class="nav-end">
+      <ul>
+        <li><a href="/work/">My Work</a></li>
+        <li><a href="/#ui">Motion graphics</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <a class="lang" href="/ar/work/" lang="ar" hreflang="ar">العربية</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top" class="work-page">
+  <section id="video">
+    <div class="wrap">
+      <h1>My Work</h1>
+      <p class="intro">Edits, motion graphics, and color work. Select a project to watch it.</p>
+      <div class="videos" id="videos"></div>
+    </div>
+  </section>
+<div class="wrap work-actions"><a class="btn" href="/">Back to home</a></div>
+</main>
+<footer><div class="wrap">© 2026 Hamza Allam</div></footer>
+
+<dialog id="player" aria-label="Video player">
+  <div class="dlg-frame" id="dlgFrame"></div>
+  <div class="dlg-bar"><p id="dlgTitle"></p><button type="button" id="dlgClose">Close</button></div>
+</dialog>
+
+<script src="/assets/content.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

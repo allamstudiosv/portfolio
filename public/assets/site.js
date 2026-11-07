@@ -44,7 +44,7 @@
   const thumbFor = v => v.thumb || (v.youtube ? `https://img.youtube.com/vi/${v.youtube}/hqdefault.jpg` : "");
 
   // Video grid
-  $("#videos").innerHTML = VIDEOS.map((v, i) => {
+  if ($("#videos")) $("#videos").innerHTML = VIDEOS.map((v, i) => {
     const t = thumbFor(v);
     const meta = [L(v.type), L(v.role)].filter(Boolean).join(STRINGS.sep);
     return `<article class="video" id="video-${i}">
@@ -72,7 +72,7 @@
   dlg.addEventListener("close", () => { $("#dlgFrame").innerHTML = ""; });
 
   // UI case studies
-  $("#cases").innerHTML = UI_PROJECTS.map(p => `<article class="case">
+  if ($("#cases")) $("#cases").innerHTML = UI_PROJECTS.map(p => `<article class="case">
     <div class="shot">${p.image ? `<img src="${esc(p.image)}" alt="${esc(STRINGS.shotAlt(L(p.title)))}" loading="lazy">` : esc(STRINGS.noShot)}</div>
     <div>
       <h3>${esc(L(p.title))}</h3>
