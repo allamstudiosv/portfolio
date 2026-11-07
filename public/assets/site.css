@@ -166,3 +166,5 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 @media(max-width:600px){.reviews-grid{grid-template-columns:1fr}}
 
 .clip[aria-pressed="true"]{background:var(--ink);color:var(--on-accent);box-shadow:inset 0 -3px 0 var(--accent)}
+
+.hero-photo{display:block;width:100%;height:auto;margin-top:clamp(2.5rem,6vw,4rem);border-radius:6px}

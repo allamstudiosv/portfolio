@@ -1,13 +1,11 @@
-/* Renders the showreel, timeline, video grid, player and UI case studies.
+/* Renders the video grid, player and UI case studies.
    Content lives in content.js; this file shouldn't need editing. */
 (function () {
   const LANG = document.documentElement.lang === "ar" ? "ar" : "en";
-  const { SHOWREEL, VIDEOS, UI_PROJECTS } = window.SITE_CONTENT;
+  const { VIDEOS, UI_PROJECTS } = window.SITE_CONTENT;
 
   const STRINGS = {
     en: {
-      playReel: "Play showreel",
-      reelEmpty: "Showreel coming soon.",
 
       play: t => `Play ${t}`,
       noThumb: "Add a thumbnail",
@@ -19,8 +17,6 @@
       sep: ". "
     },
     ar: {
-      playReel: "تشغيل العرض",
-      reelEmpty: "العرض قريبًا.",
 
       play: t => `تشغيل ${t}`,
       noThumb: "أضف صورة مصغّرة",
@@ -35,8 +31,6 @@
 
   const L = v => (v && typeof v === "object") ? (v[LANG] ?? v.en ?? "") : (v ?? "");
   const $ = s => document.querySelector(s);
-  const toSec = d => { const [m, s] = (d || "0:00").split(":").map(Number); return m * 60 + (s || 0); };
-  const fmt = t => `${Math.floor(t / 60)}:${String(Math.round(t % 60)).padStart(2, "0")}`;
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function embed(src, autoplay) {
@@ -48,44 +42,6 @@
   }
   const hasSrc = v => v.youtube || v.vimeo || v.file;
   const thumbFor = v => v.thumb || (v.youtube ? `https://img.youtube.com/vi/${v.youtube}/hqdefault.jpg` : "");
-
-  // Showreel
-  (function () {
-    const reel = $("#reel");
-    const poster = SHOWREEL.poster || thumbFor(SHOWREEL);
-    reel.innerHTML = `<button class="reel-poster" type="button" ${poster ? `style="background-image:url('${esc(poster)}')"` : ""}>
-        <span class="play">${esc(STRINGS.playReel)}</span></button>
-        ${hasSrc(SHOWREEL) ? "" : `<p class="reel-empty">${esc(STRINGS.reelEmpty)}</p>`}`;
-    reel.querySelector("button").addEventListener("click", () => {
-      if (hasSrc(SHOWREEL)) reel.innerHTML = embed(SHOWREEL, true);
-    });
-  })();
-
-  // Timeline
-  (function () {
-    const total = VIDEOS.reduce((a, v) => a + Math.max(toSec(v.duration), 1), 0);
-    $("#ruler").innerHTML = [0, .25, .5, .75, 1].map(f => `<span>${fmt(total * f)}</span>`).join("");
-    const track = $("#track");
-    VIDEOS.forEach((v, i) => {
-      const b = document.createElement("button");
-      b.className = "clip";
-      b.type = "button";
-      b.setAttribute("aria-controls", "reel");
-      b.setAttribute("aria-pressed", String(!!hasSrc(SHOWREEL) && ["file", "youtube", "vimeo"].some(key => SHOWREEL[key] && SHOWREEL[key] === v[key])));
-      // Square root keeps a 12-minute video from swallowing a 20-second one
-      b.style.setProperty("--len", Math.sqrt(Math.max(toSec(v.duration), 1)).toFixed(2));
-      b.innerHTML = `${esc(L(v.title))}<span class="tc">${esc(v.duration)}</span>`;
-      b.setAttribute("aria-label", STRINGS.play(L(v.title)));
-      b.addEventListener("click", () => {
-        if (!hasSrc(v)) { alert(STRINGS.noVideo(L(v.title))); return; }
-        const reel = $("#reel");
-        reel.innerHTML = embed(v, true);
-        track.querySelectorAll(".clip").forEach(clip => clip.setAttribute("aria-pressed", String(clip === b)));
-        reel.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-      });
-      track.appendChild(b);
-    });
-  })();
 
   // Video grid
   $("#videos").innerHTML = VIDEOS.map((v, i) => {
