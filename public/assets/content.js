@@ -26,8 +26,8 @@ window.SITE_CONTENT = {
 
   VIDEOS: [
     {
-      title: { en: "Muhammed Al Andaulsi", ar: "محمد الأندلسي" },
-      description: { en: "A video editing project for Muhammed Al Andaulsi. Watch the complete 31-second clip here.", ar: "مشروع مونتاج فيديو لمحمد الأندلسي. شاهد المقطع كاملًا بمدة 31 ثانية." },
+      title: { en: "A Re-edit for Muhammed Al Andaulsi", ar: "إعادة مونتاج لفيديو محمد الأندلسي" },
+      description: { en: "re-edit featuring cinematic visuals, motion graphics, and storytelling, created to enhance the original video and deliver a more immersive visual experience.", ar: "إعادة مونتاج تجمع بين المشاهد السينمائية والموشن جرافيك والسرد القصصي، بهدف تطوير الفيديو الأصلي وتقديم تجربة بصرية أكثر غنى واندماجًا." },
       type: { en: "", ar: "" },
       role: { en: "", ar: "" },
       tools: { en: "", ar: "" },
@@ -37,7 +37,7 @@ window.SITE_CONTENT = {
     },
     {
       title: { en: "Historical documentary", ar: "فيلم وثائقي تاريخي" },
-      description: { en: "A short historical documentary segment using motion graphics to present historical information visually.", ar: "مقطع وثائقي تاريخي قصير يوظّف الموشن جرافيك لعرض المعلومات التاريخية بصريًا." },
+      description: { en: "A motion graphics project created for a historical documentary. I focused on designing visuals that evoke a sense of heritage through animated maps, title design, and the cinematic integration of historical elements. I used motion, lighting, and aged textures to create a cohesive visual identity that supports the content and captures the viewer’s attention, with all animation and effects produced in Adobe After Effects.", ar: "مشروع موشن جرافيك تم تنفيذه لفيديو وثائقي تاريخي، ركزت فيه على تصميم مشاهد بصرية تعكس الطابع التراثي من خلال تحريك الخرائط، وتصميم العناوين، ودمج العناصر التاريخية بطريقة سينمائية. اعتمدت على استخدام الحركة، والإضاءة، والخامات القديمة لإضفاء هوية بصرية متناسقة تدعم المحتوى وتلفت انتباه المشاهد، مع تنفيذ جميع التحريكات والمؤثرات داخل Adobe After Effects." },
       type:  { en: "Motion graphics", ar: "موشن جرافيكس" },
       role:  { en: "", ar: "" },
       tools: { en: "", ar: "" },
@@ -47,7 +47,7 @@ window.SITE_CONTENT = {
     },
     {
       title: { en: "UI animation", ar: "تحريك واجهات" },
-      description: { en: "A short motion graphics piece in the style of UI animation, presented in a vertical format.", ar: "عمل موشن جرافيك قصير بأسلوب تحريك عناصر الواجهات، معروض بتنسيق رأسي." },
+      description: { en: "Exploring the art of UI animation through smooth transitions, dynamic interface elements, and expressive micro-interactions that bring digital experiences to life", ar: "استكشاف فن تحريك الواجهات من خلال انتقالات سلسة، وعناصر واجهة ديناميكية، وتفاعلات دقيقة معبّرة تضفي الحياة على التجارب الرقمية." },
       type:  { en: "Motion graphics · UI animation", ar: "موشن جرافيك · تحريك بأسلوب الواجهات" },
       role:  { en: "", ar: "" },
       tools: { en: "", ar: "" },
