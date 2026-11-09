@@ -1,0 +1,7 @@
+.back-home-row{width:min(1180px,100% - 3rem);margin:.5rem auto 0;display:flex;justify-content:flex-start;direction:ltr}
+.back-home{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border:1px solid #2C313B;border-radius:50%;color:#fff;background:transparent;text-decoration:none;transition:background-color .2s,border-color .2s}
+.back-home svg{display:block;transition:transform .2s ease}
+.back-home:focus-visible{outline:3px solid #2878FF;outline-offset:4px}
+@media(hover:hover) and (pointer:fine){.back-home:hover{color:#fff;background:#181B21;border-color:#2878FF}.back-home:hover svg{transform:translateX(-5px)}}
+.thanks-page .back-home-row{position:absolute;top:1.5rem;left:1.5rem;width:auto;margin:0}
+@media(prefers-reduced-motion:reduce){.back-home,.back-home svg{transition:none}.back-home:hover svg{transform:none}}
