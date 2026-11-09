@@ -57,19 +57,59 @@
       </button></article>`;
   }).join("");
 
-  // Player
+  // Load a silent preview only when a pointer enters a project.
   const dlg = $("#player");
-  document.querySelectorAll(".video button").forEach(btn => btn.addEventListener("click", () => {
+  const previews = [];
+  const hoverMedia = matchMedia("(hover: hover) and (pointer: fine)");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  document.querySelectorAll(".video button").forEach(btn => {
     const v = VIDEOS[btn.dataset.i];
-    if (!hasSrc(v)) { alert(STRINGS.noVideo(L(v.title))); return; }
-    $("#dlgFrame").innerHTML = embed(v, true);
-    dlg.classList.toggle("tall", !!v.vertical);
-    $("#dlgTitle").textContent = [L(v.title), L(v.type)].filter(Boolean).join(STRINGS.sep);
-    dlg.showModal();
-  }));
-  $("#dlgClose").addEventListener("click", () => dlg.close());
-  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-  dlg.addEventListener("close", () => { $("#dlgFrame").innerHTML = ""; });
+    let preview, active = false;
+    const stop = () => {
+      active = false;
+      if (preview) { preview.pause(); preview.currentTime = 0; preview.classList.remove("is-playing"); }
+    };
+    previews.push(stop);
+    btn.addEventListener("pointerenter", e => {
+      if (e.pointerType === "touch" || !hoverMedia.matches || reducedMotion.matches || dlg?.open || !v.file) return;
+      previews.forEach(pause => pause());
+      active = true;
+      if (!preview) {
+        preview = document.createElement("video");
+        preview.className = "video-preview";
+        preview.muted = true; preview.loop = true; preview.playsInline = true;
+        preview.preload = "none"; preview.setAttribute("aria-hidden", "true");
+        preview.src = v.file;
+        btn.querySelector(".thumb").append(preview);
+        preview.addEventListener("playing", () => {
+          if (active) preview.classList.add("is-playing"); else preview.pause();
+        });
+      }
+      preview.play().catch(() => preview.classList.remove("is-playing"));
+    });
+    btn.addEventListener("pointerleave", stop);
+    btn.addEventListener("click", () => {
+      previews.forEach(pause => pause());
+      if (!hasSrc(v)) { alert(STRINGS.noVideo(L(v.title))); return; }
+      $("#dlgFrame").innerHTML = embed(v, true);
+      dlg.classList.toggle("tall", !!v.vertical);
+      $("#dlgTitle").textContent = L(v.title);
+      if ($("#dlgDescription")) $("#dlgDescription").textContent = L(v.description);
+      document.body.classList.add("project-open");
+      dlg.showModal();
+    });
+  });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) previews.forEach(stop => stop()); });
+  reducedMotion.addEventListener("change", () => previews.forEach(stop => stop()));
+  $("#dlgClose")?.addEventListener("click", () => dlg.close());
+  dlg?.addEventListener("click", e => {
+    const r = dlg.getBoundingClientRect();
+    if (e.target === dlg && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) dlg.close();
+  });
+  dlg?.addEventListener("close", () => {
+    $("#dlgFrame").innerHTML = "";
+    document.body.classList.remove("project-open");
+  });
 
   // UI case studies
   if ($("#cases")) $("#cases").innerHTML = UI_PROJECTS.map(p => `<article class="case">

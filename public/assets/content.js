@@ -27,6 +27,7 @@ window.SITE_CONTENT = {
   VIDEOS: [
     {
       title: { en: "Muhammed Al Andaulsi", ar: "محمد الأندلسي" },
+      description: { en: "A video editing project for Muhammed Al Andaulsi. Watch the complete 31-second clip here.", ar: "مشروع مونتاج فيديو لمحمد الأندلسي. شاهد المقطع كاملًا بمدة 31 ثانية." },
       type: { en: "", ar: "" },
       role: { en: "", ar: "" },
       tools: { en: "", ar: "" },
@@ -36,6 +37,7 @@ window.SITE_CONTENT = {
     },
     {
       title: { en: "Historical documentary", ar: "فيلم وثائقي تاريخي" },
+      description: { en: "A short historical documentary segment using motion graphics to present historical information visually.", ar: "مقطع وثائقي تاريخي قصير يوظّف الموشن جرافيك لعرض المعلومات التاريخية بصريًا." },
       type:  { en: "Motion graphics", ar: "موشن جرافيكس" },
       role:  { en: "", ar: "" },
       tools: { en: "", ar: "" },
@@ -45,6 +47,7 @@ window.SITE_CONTENT = {
     },
     {
       title: { en: "UI animation", ar: "تحريك واجهات" },
+      description: { en: "A short motion graphics piece in the style of UI animation, presented in a vertical format.", ar: "عمل موشن جرافيك قصير بأسلوب تحريك عناصر الواجهات، معروض بتنسيق رأسي." },
       type:  { en: "Motion graphics · UI animation", ar: "موشن جرافيك · تحريك بأسلوب الواجهات" },
       role:  { en: "", ar: "" },
       tools: { en: "", ar: "" },

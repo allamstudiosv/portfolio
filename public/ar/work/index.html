@@ -44,9 +44,10 @@
 </main>
 <footer><div class="wrap">© 2026 حمزة علام</div></footer>
 
-<dialog id="player" aria-label="مشغّل الفيديو">
+<dialog id="player" class="project-dialog" aria-labelledby="dlgTitle" aria-describedby="dlgDescription">
+  <div class="project-dialog-header"><span>من أعمالي</span><button type="button" id="dlgClose" autofocus aria-label="إغلاق">✕</button></div>
   <div class="dlg-frame" id="dlgFrame"></div>
-  <div class="dlg-bar"><p id="dlgTitle"></p><button type="button" id="dlgClose">إغلاق</button></div>
+  <div class="project-dialog-copy"><h2 id="dlgTitle"></h2><p id="dlgDescription"></p></div>
 </dialog>
 
 <script src="/assets/content.js"></script>
