@@ -1,0 +1,29 @@
+.site-header{position:relative;z-index:20;background:rgba(17,19,24,.96);border-bottom:1px solid var(--rule);backdrop-filter:blur(14px)}
+.site-header .nav{gap:1rem}
+.site-header .nav a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:.45em}
+.nav-toggle{display:none;width:44px;height:44px;padding:10px;border:1px solid var(--rule);border-radius:8px;background:transparent;color:var(--ink);cursor:pointer;flex:none}
+.nav-toggle span{display:block;width:22px;height:2px;background:currentColor;transition:transform .2s,opacity .2s}
+.nav-toggle span+span{margin-top:5px}
+.nav-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.menu-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-open .nav-toggle span:nth-child(2){opacity:0}
+.menu-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(min-width:861px){.site-header{position:sticky;top:0}html{scroll-padding-top:100px}}
+@media(max-width:860px){
+  .site-header .nav{padding-block:.9rem;flex-wrap:wrap;width:calc(100% - 2rem)}
+  .site-header .nav-end{gap:.65rem}
+  .site-header .nav ul{display:flex;flex-wrap:wrap;gap:.75rem}
+  .nav-ready .nav-toggle{display:block}
+  .nav-ready .nav ul{display:none}
+  .nav-ready.menu-open .nav ul{display:flex;position:absolute;top:100%;inset-inline:0;flex-direction:column;gap:.25rem;padding:.75rem 1rem 1rem;background:var(--bg);border-bottom:1px solid var(--rule);box-shadow:0 16px 24px #0004;max-height:70dvh;overflow:auto}
+  .site-header .nav ul a{display:block;padding:.8rem 1rem;border-radius:6px}
+  .site-header .nav ul a:hover,.site-header .nav ul a:focus-visible{background:var(--panel);color:var(--ink)}
+}
+@media(max-width:400px){
+  .site-header .nav{gap:.5rem}
+  .site-header .nav .home{font-size:.85rem;gap:.4rem}
+  .site-header .nav .home img{height:1.45rem}
+  .site-header .nav-end{gap:.4rem}
+  .site-header .lang{font-size:.8rem;padding:.25rem .55rem}
+}
+@media(prefers-reduced-motion:reduce){.nav-toggle span{transition:none}}

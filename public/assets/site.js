@@ -50,7 +50,7 @@
     return `<article class="video" id="video-${i}">
       <button type="button" data-i="${i}" aria-label="${esc(STRINGS.play(L(v.title)))}">
         <div class="thumb">${t ? `<img src="${esc(t)}" alt="" loading="lazy">` : `<span class="noimg">${esc(STRINGS.noThumb)}</span>`}
-          <span class="dur tc">${esc(v.duration)}</span></div>
+          <span class="video-play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 4.5v15l12-7.5z"/></svg></span><span class="dur tc">${esc(v.duration)}</span></div>
         <h3>${esc(L(v.title))}</h3>
         ${meta ? `<p class="meta">${esc(meta)}</p>` : ""}
         ${L(v.tools) ? `<p class="meta">${esc(L(v.tools))}</p>` : ""}
