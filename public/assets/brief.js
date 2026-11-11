@@ -1,4 +1,7 @@
 (() => {
-  const form = document.querySelector('#brief-form');
-  if (form) form.addEventListener('submit', event => event.preventDefault());
+ const form=document.querySelector('#brief-form');if(!form)return;
+ const ar=document.documentElement.lang==='ar',status=document.querySelector('#brief-status'),button=form.querySelector('[type=submit]');form.elements.request_id.value=crypto.randomUUID();let pending=false;
+ form.addEventListener('submit',async event=>{event.preventDefault();if(pending||!form.reportValidity())return;pending=true;button.disabled=true;form.setAttribute('aria-busy','true');status.textContent=ar?'جارٍ حفظ طلبك…':'Saving your request…';
+ try{const response=await fetch(form.action,{method:'POST',body:new URLSearchParams(new FormData(form)),headers:{Accept:'application/json'}});const data=await response.json();if(!response.ok)throw Error(data.error);const box=document.createElement('div');box.className='brief-success';box.tabIndex=-1;const heading=document.createElement('h2');heading.textContent=ar?'تم استلام طلب مشروعك':'Your project request is received';const message=document.createElement('p');message.textContent=ar?'شكرًا لك! سأراجع التفاصيل وأتواصل معك. سنرسل لك رمز متابعة خاصًا بمشروعك عند بدء التعاون.':'Thank you! I will review your brief and get in touch. We will share a private project tracking code when we begin working together.';const link=document.createElement('a');link.className='btn';link.href=ar?'/ar/':'/';link.textContent=ar?'العودة إلى الرئيسية':'Back to home';box.append(heading,message,link);form.replaceWith(box);box.focus();box.scrollIntoView({block:'center'});
+ }catch(e){status.textContent=e.message|| (ar?'تعذّر الإرسال. إجاباتك ما زالت موجودة؛ حاول مجددًا.':'Unable to send. Your answers are still here; try again.');status.classList.add('is-error');status.focus();}finally{pending=false;button.disabled=false;form.removeAttribute('aria-busy');}});
 })();
