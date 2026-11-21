@@ -20,7 +20,7 @@ window.SITE_CONTENT = {
   SHOWREEL: {
     youtube: "",
     vimeo: "",
-    file: "https://pub-0b2ca809847b423981bcb0f5bcc7e2b2.r2.dev/Muhammed%20Al%20Andaulsi.mp4",
+    file: "https://media.allamstudios.space/Muhammed%20Al%20Andaulsi.mp4",
     poster: "/videos/thumbs/muhammed-al-andaulsi.jpg"
   },
 
@@ -32,7 +32,7 @@ window.SITE_CONTENT = {
       role: { en: "", ar: "" },
       tools: { en: "", ar: "" },
       duration: "0:31",
-      file: "https://pub-0b2ca809847b423981bcb0f5bcc7e2b2.r2.dev/Muhammed%20Al%20Andaulsi.mp4",
+      file: "https://media.allamstudios.space/Muhammed%20Al%20Andaulsi.mp4",
       thumb: "/videos/thumbs/muhammed-al-andaulsi.jpg"
     },
     {
@@ -52,7 +52,7 @@ window.SITE_CONTENT = {
       role:  { en: "", ar: "" },
       tools: { en: "", ar: "" },
       duration: "0:07",
-      file: "https://pub-0b2ca809847b423981bcb0f5bcc7e2b2.r2.dev/UI%20Animation.mp4",
+      file: "https://media.allamstudios.space/UI%20Animation.mp4",
       thumb: "/videos/thumbs/ui-animation.jpg",
       vertical: true
     }
