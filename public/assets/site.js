@@ -7,6 +7,7 @@
   const STRINGS = {
     en: {
 
+      share: "Share video", copied: "Link copied", copyPrompt: "Copy this video link:",
       play: t => `Play ${t}`,
       noThumb: "Add a thumbnail",
       noVideo: t => `"${t}" isn't available yet.`,
@@ -18,6 +19,7 @@
     },
     ar: {
 
+      share: "مشاركة الفيديو", copied: "تم نسخ الرابط", copyPrompt: "انسخ رابط الفيديو:",
       play: t => `تشغيل ${t}`,
       noThumb: "أضف صورة مصغّرة",
       noVideo: t => `«${t}» غير متاح بعد.`,
@@ -54,7 +56,7 @@
         <h3>${esc(L(v.title))}</h3>
         ${meta ? `<p class="meta">${esc(meta)}</p>` : ""}
         ${L(v.tools) ? `<p class="meta">${esc(L(v.tools))}</p>` : ""}
-      </button></article>`;
+      </button><button type="button" class="video-share" data-share="${i}" aria-label="${esc(STRINGS.share + ": " + L(v.title))}">${STRINGS.share}</button><span class="share-status" role="status"></span></article>`;
   }).join("");
 
   // Load a silent preview only when a pointer enters a project.
@@ -62,7 +64,7 @@
   const previews = [];
   const hoverMedia = matchMedia("(hover: hover) and (pointer: fine)");
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  document.querySelectorAll(".video button").forEach(btn => {
+  document.querySelectorAll(".video button[data-i]").forEach(btn => {
     const v = VIDEOS[btn.dataset.i];
     let preview, active = false;
     const stop = () => {
@@ -89,16 +91,46 @@
     });
     btn.addEventListener("pointerleave", stop);
     btn.addEventListener("click", () => {
-      previews.forEach(pause => pause());
-      if (!hasSrc(v)) { alert(STRINGS.noVideo(L(v.title))); return; }
-      $("#dlgFrame").innerHTML = embed(v, true);
-      dlg.classList.toggle("tall", !!v.vertical);
-      $("#dlgTitle").textContent = L(v.title);
-      if ($("#dlgDescription")) $("#dlgDescription").textContent = L(v.description);
-      document.body.classList.add("project-open");
-      dlg.showModal();
+      openVideo(v, true);
+      const url = new URL(location.href);
+      url.hash = "video=" + v.id;
+      history.replaceState(null, "", url);
+      syncLanguageLink();
     });
   });
+  function openVideo(v, autoplay = false) {
+    if (!dlg || !hasSrc(v)) return;
+    previews.forEach(pause => pause());
+    $("#dlgFrame").innerHTML = embed(v, autoplay);
+    dlg.classList.toggle("tall", !!v.vertical);
+    $("#dlgTitle").textContent = L(v.title);
+    if ($("#dlgDescription")) $("#dlgDescription").textContent = L(v.description);
+    document.body.classList.add("project-open");
+    if (!dlg.open) dlg.showModal();
+  }
+  function syncLanguageLink() {
+    const link = $(".lang");
+    if (link) { const url = new URL(link.href); url.hash = location.hash; link.href = url.href; }
+  }
+  function openLinkedVideo() {
+    const id = new URLSearchParams(location.hash.slice(1)).get("video");
+    const video = VIDEOS.find(v => v.id === id);
+    if (video) openVideo(video);
+    else if (dlg?.open) dlg.close();
+    syncLanguageLink();
+  }
+  document.querySelectorAll("[data-share]").forEach(button => {
+    button.addEventListener("click", async () => {
+      const video = VIDEOS[button.dataset.share];
+      const url = new URL(LANG === "ar" ? "/ar/work/" : "/work/", location.origin);
+      url.hash = "video=" + video.id;
+      const status = button.nextElementSibling;
+      status.textContent = "";
+      try { await navigator.clipboard.writeText(url.href); status.textContent = STRINGS.copied; }
+      catch { window.prompt(STRINGS.copyPrompt, url.href); }
+    });
+  });
+  window.addEventListener("hashchange", openLinkedVideo);
   document.addEventListener("visibilitychange", () => { if (document.hidden) previews.forEach(stop => stop()); });
   reducedMotion.addEventListener("change", () => previews.forEach(stop => stop()));
   $("#dlgClose")?.addEventListener("click", () => dlg.close());
@@ -107,9 +139,18 @@
     if (e.target === dlg && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) dlg.close();
   });
   dlg?.addEventListener("close", () => {
+    if (dlg.open) return;
+    const url = new URL(location.href);
+    if (new URLSearchParams(url.hash.slice(1)).has("video")) {
+      url.hash = "";
+      history.replaceState(null, "", url);
+    }
+    syncLanguageLink();
     $("#dlgFrame").innerHTML = "";
     document.body.classList.remove("project-open");
   });
+
+  openLinkedVideo();
 
   // UI case studies
   if ($("#cases")) $("#cases").innerHTML = UI_PROJECTS.map(p => `<article class="case">

@@ -230,3 +230,8 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 .project-dialog-copy p{color:var(--muted);font-size:.95rem;line-height:1.8;margin:0;white-space:pre-line}
 @media(max-width:600px){.project-dialog-copy{padding:1.1rem}.project-dialog .dlg-frame{height:auto;aspect-ratio:16/9}.project-dialog.tall .dlg-frame{height:45vh;aspect-ratio:auto}}
 @media(prefers-reduced-motion:reduce){.video-preview{transition:none}}
+
+.video .video-share{display:inline-flex;width:auto;min-height:44px;box-sizing:border-box;align-items:center;margin-top:1rem;padding:.45rem .85rem;border:1px solid var(--accent);border-radius:8px;color:var(--ink);font-size:.85rem;font-weight:600}
+.video .video-share:hover{background:rgba(40,120,255,.15)}
+.video .video-share:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.share-status{display:inline-block;margin-inline-start:.7rem;font-size:.8rem;color:var(--muted)}
