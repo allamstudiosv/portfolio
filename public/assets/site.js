@@ -42,7 +42,7 @@
     if (src.file) return `<video src="${esc(src.file)}" controls ${autoplay ? "autoplay" : ""} playsinline></video>`;
     return "";
   }
-  const hasSrc = v => v.youtube || v.vimeo || v.file;
+  const hasSrc = v => v.youtube || v.vimeo || v.file || v.clips?.length;
   const thumbFor = v => v.thumb || (v.youtube ? `https://img.youtube.com/vi/${v.youtube}/hqdefault.jpg` : "");
 
   // Video grid
@@ -51,8 +51,8 @@
     const meta = [L(v.type), L(v.role)].filter(Boolean).join(STRINGS.sep);
     return `<article class="video" id="video-${i}">
       <button type="button" data-i="${i}" aria-label="${esc(STRINGS.play(L(v.title)))}">
-        <div class="thumb">${t ? `<img src="${esc(t)}" alt="" loading="lazy">` : `<span class="noimg">${esc(STRINGS.noThumb)}</span>`}
-          <span class="video-play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 4.5v15l12-7.5z"/></svg></span><span class="dur tc">${esc(v.duration)}</span></div>
+        <div class="thumb${v.clips ? " collection-thumb" : ""}">${t ? `<img src="${esc(t)}" alt="" loading="lazy">` : `<span class="noimg">${esc(STRINGS.noThumb)}</span>`}
+          <span class="video-play-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 4.5v15l12-7.5z"/></svg></span><span class="dur tc">${v.clips ? (LANG === "ar" ? "٣ فيديوهات" : "3 videos") : esc(v.duration)}</span></div>
         <h3>${esc(L(v.title))}</h3>
         ${meta ? `<p class="meta">${esc(meta)}</p>` : ""}
         ${L(v.tools) ? `<p class="meta">${esc(L(v.tools))}</p>` : ""}
@@ -98,15 +98,39 @@
       syncLanguageLink();
     });
   });
+  let collectionObserver;
   function openVideo(v, autoplay = false) {
     if (!dlg || !hasSrc(v)) return;
     previews.forEach(pause => pause());
-    $("#dlgFrame").innerHTML = embed(v, autoplay);
+    collectionObserver?.disconnect();
+    dlg.classList.toggle("project-collection", !!v.clips?.length);
+    $("#dlgFrame").innerHTML = v.clips?.length
+      ? '<div class="project-clips">' + v.clips.map((clip, i) => `<figure><video data-src="${esc(clip.file)}" poster="${esc(clip.poster)}" width="${clip.width}" height="${clip.height}" autoplay loop muted playsinline controls preload="none" aria-label="${esc(L(v.title))} — ${i + 1}"></video><figcaption>${LANG === "ar" ? "الفيديو" : "Video"} ${i + 1}</figcaption></figure>`).join('') + '</div>'
+      : embed(v, autoplay);
     dlg.classList.toggle("tall", !!v.vertical);
     $("#dlgTitle").textContent = L(v.title);
     if ($("#dlgDescription")) $("#dlgDescription").textContent = L(v.description);
+    $(".project-extra")?.remove();
+    if (v.clips?.length) {
+      const extra = document.createElement("div");
+      extra.className = "project-extra";
+      extra.innerHTML = '<p class="project-category">' + esc(L(v.type)) + '</p><p class="project-tags">' + esc(L(v.tags)) + '</p>';
+      $(".project-dialog-copy").append(extra);
+    }
     document.body.classList.add("project-open");
     if (!dlg.open) dlg.showModal();
+    if (v.clips?.length) {
+      collectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(({target: video, isIntersecting}) => {
+          if (isIntersecting) {
+            if (!video.src) video.src = video.dataset.src;
+            video.muted = true;
+            video.play().catch(() => {});
+          } else video.pause();
+        });
+      }, { root: dlg, threshold: 0.1 });
+      $("#dlgFrame").querySelectorAll("video").forEach(video => collectionObserver.observe(video));
+    }
   }
   function syncLanguageLink() {
     const link = $(".lang");
@@ -140,6 +164,7 @@
   });
   dlg?.addEventListener("close", () => {
     if (dlg.open) return;
+    collectionObserver?.disconnect();
     const url = new URL(location.href);
     if (new URLSearchParams(url.hash.slice(1)).has("video")) {
       url.hash = "";

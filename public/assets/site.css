@@ -235,3 +235,16 @@ dialog.tall .dlg-frame{aspect-ratio:9/16;height:min(78vh,860px);width:auto;margi
 .video .video-share:hover{background:rgba(40,120,255,.15)}
 .video .video-share:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .share-status{display:inline-block;margin-inline-start:.7rem;font-size:.8rem;color:var(--muted)}
+
+/* Multi-clip projects: keep every frame visible at its original aspect ratio. */
+.video .collection-thumb img{object-fit:contain;background:var(--panel)}
+.project-dialog.project-collection{width:min(1160px,94vw)}
+.project-dialog.project-collection .dlg-frame{height:auto;aspect-ratio:auto;background:var(--bg)}
+.project-clips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;padding:1.25rem}
+.project-clips figure{margin:0;min-width:0}
+.project-dialog .project-clips video{position:static;display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:contain;background:#000;border:1px solid var(--rule);border-radius:10px}
+.project-clips figcaption{margin-top:.5rem;color:var(--muted);font-size:.8rem}
+.project-extra{margin-top:1rem;border-top:1px solid var(--rule);padding-top:1rem}
+.project-dialog-copy .project-category{color:var(--ink);font-weight:600}
+.project-dialog-copy .project-tags{margin-top:.4rem;font-size:.8rem}
+@media(max-width:650px){.project-clips{grid-template-columns:1fr;padding:1rem;gap:1.25rem}.project-clips figure{width:100%;max-width:380px;margin-inline:auto}}

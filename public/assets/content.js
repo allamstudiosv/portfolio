@@ -58,6 +58,20 @@ window.SITE_CONTENT = {
       file: "https://media.allamstudios.space/UI%20Animation.mp4",
       thumb: "/videos/thumbs/ui-animation.jpg",
       vertical: true
+    },
+    {
+      id: "football-content-showreel",
+      title: { en: "Football Content Showreel", ar: "مختارات من محتوى كرة القدم" },
+      type: { en: "Video Editing & Motion Graphics", ar: "مونتاج الفيديو والموشن جرافيك" },
+      tags: { en: "Video Editing · Motion Graphics · Visual Storytelling", ar: "مونتاج الفيديو · موشن جرافيك · السرد البصري" },
+      description: { en: "A showcase of football content combining dynamic editing, creative motion graphics, and purposeful visual storytelling to deliver engaging visual experiences.", ar: "مجموعة من أعمال كرة القدم تجمع بين المونتاج الحيوي والموشن جرافيك الإبداعي والسرد البصري الهادف، لتقديم تجارب بصرية جذابة." },
+      duration: "3 videos",
+      clips: [1, 2, 3].map(n => ({
+        file: "https://media.allamstudios.space/football-showreel-" + n + ".mp4",
+        poster: "https://media.allamstudios.space/football-showreel-" + n + ".jpg",
+        width: 1080, height: 1920
+      })),
+      thumb: "https://media.allamstudios.space/football-showreel-1.jpg"
     }
   ],
 
