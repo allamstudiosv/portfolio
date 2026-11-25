@@ -72,6 +72,28 @@ window.SITE_CONTENT = {
         width: 1080, height: 1920
       })),
       thumb: "https://media.allamstudios.space/football-showreel-1.jpg"
+    },
+    {
+      "id": "healthcare-awareness-character-animation",
+      "title": {
+        "en": "Healthcare Awareness – Character Animation",
+        "ar": "التوعية الصحية – تحريك الشخصيات"
+      },
+      "type": {
+        "en": "Motion Graphics & 2D Animation",
+        "ar": "موشن جرافيك ورسوم متحركة ثنائية الأبعاد"
+      },
+      "role": {
+        "en": "2D Character Animation & Motion Graphics",
+        "ar": "تحريك الشخصيات ثنائية الأبعاد والموشن جرافيك"
+      },
+      "description": {
+        "en": "A graduation project completed as part of a motion graphics course, focused on bringing pre-designed 2D characters to life through expressive animation, dynamic motion graphics, and visual storytelling. This is a course graduation project, not commercial client work. My role: 2D Character Animation & Motion Graphics; character illustration and design were not part of my role.",
+        "ar": "مشروع تخرج أُنجز ضمن دورة في الموشن جرافيك، يركز على إضفاء الحياة على شخصيات ثنائية الأبعاد مصممة مسبقًا، من خلال التحريك التعبيري والموشن جرافيك الحيوي والسرد البصري. هذا مشروع تعليمي وليس عملًا تجاريًا لعميل. دوري: تحريك الشخصيات ثنائية الأبعاد وتنفيذ الموشن جرافيك، ولا يشمل رسم الشخصيات أو تصميمها."
+      },
+      "duration": "0:28",
+      "file": "/videos/healthcare-awareness.mp4",
+      "thumb": "/videos/thumbs/healthcare-awareness.jpg"
     }
   ],
 
